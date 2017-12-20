@@ -1,0 +1,10 @@
+{
+  "name": "frankbot",
+  "version": "1.0.0",
+  "description": "Frankish International Bot",
+  "main": "bot.js",
+  "author": "Nathan Wade",
+  "dependencies": {
+    "discord.js": "^11.2.1"
+  }
+}
