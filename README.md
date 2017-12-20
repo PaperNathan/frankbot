@@ -10,7 +10,7 @@ FrankBot will read through a Text Channel's history and save the username and me
 ### Commands
 
 ##### !save
-This command goes through ever sent message and saves it to a text file.
+This command goes through every sent message and saves it to a text file.
 
 ### Make FrankBot Work
 To make FrankBot Work you're going to need a few things.  
