@@ -1,4 +1,4 @@
-# FrankBot v1.0
+# FrankBot v1.0.1
 *A Discord Bot for Saving Chat Logs*
 
 ### What is FrankBot
