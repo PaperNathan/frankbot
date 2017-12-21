@@ -17,12 +17,24 @@ client.on('ready', () => {
 client.on('message', message => {
     if(message.author.bot) return;
 
-    // COMMAND:  Save Chat Logs for a Text Channel 
-    if (message.author.username == "Twinbee" && message.content == "!save") {
-        let writeMsg = [];
-        let lastMsg = message.channel.lastMessageID;
+    if (message.content[0] == "!" && message.content[1]) {
+        let userCommand = message.content.toString().substring(1);
 
-        msgCollection(message, lastMsg, writeMsg);
+        switch(userCommand) {
+            case "save":  //  Save Chat Logs for a Text Channel
+                let writeMsg = [];
+                let lastMsg = message.channel.lastMessageID;
+        
+                msgCollection(message, lastMsg, writeMsg);
+            break;
+
+            case "test":
+                message.channel.send("This command is reserved for testing new functions.");
+            break;
+            
+            default:
+                message.channel.send("I'm sorry, I didn't understand that command.");
+        }
     }
 
     // =-=-=-=-=-=-=-=-=  TEST COMMANDS  =-=-=-=-=-=-=-=-=-=-=-
@@ -71,20 +83,25 @@ function msgCollection(message, lastMsg, writeMsg) {
                 msgCollection(message, lastMsg, writeMsg)
             }
         })
-        writeToFile(writeMsg, overflowToggle);  //  Sends the Array to be Written to a File
+        writeToFile(message, writeMsg, overflowToggle);  //  Sends the Array to be Written to a File
     })
     .catch(console.error);  //  Catches Promise Errors
 }
 
 // Writes the Collected Chat Logs to a File [log.txt]
-function writeToFile(writeMsg, overflowToggle) {
+function writeToFile(message, writeMsg, overflowToggle) {
     console.log('Block Saved!');
     if (overflowToggle == true) {
+
+        let d = new Date();
+        let fileName = message.channel.name + "-" + d.getTime().toString() + '.txt';
+
         for (i=writeMsg.length-1; i>=0; i--) {
-            fs.appendFile('log.txt', `${writeMsg[i]} \n`, (err) => {
+            fs.appendFile(fileName, `${writeMsg[i]} \n`, (err) => {
                 if (err) throw err;
             })
         }
+
     }
 }
 

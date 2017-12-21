@@ -28,14 +28,13 @@ To make FrankBot Work you're going to need a few things.
 
 After that, just run *node bot.js* in your Terminal.
 
-### WARNING
-At the moment, FrankBot only creates **ONE** *log.txt*.  If you run the **!save** command more than once, he will append all of your Text Channel messages to the *log.txt* file twice.
-
+### Known Bugs
+No known bugs  🙂
 ### The Future
 
 - [x] Save Sent Messages, Links, Code
+- [x] Save Chat Logs based on Channel Name and Date
 - [ ] Change Command Input to Switch/Case with Error Handling
-- [ ] Save Chat Logs based on Channel Name and Date
 - [ ] Save Sent Photos
 - [ ] Save Sent File Names
 - [ ] Rebuild Archived but Deleted Chat Logs
