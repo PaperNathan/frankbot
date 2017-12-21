@@ -34,6 +34,7 @@ At the moment, FrankBot only creates **ONE** *log.txt*.  If you run the **!save*
 ### The Future
 
 - [x] Save Sent Messages, Links, Code
+- [ ] Change Command Input to Switch/Case with Error Handling
 - [ ] Save Chat Logs based on Channel Name and Date
 - [ ] Save Sent Photos
 - [ ] Save Sent File Names
