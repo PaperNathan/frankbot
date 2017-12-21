@@ -1,11 +1,12 @@
 // Import the discord.js module
 const Discord = require('discord.js');
-const auth = require('./auth.json');
+const config = require('./config.json');
 const fs = require('fs');
 
 const client = new Discord.Client();
 
-const token = auth.token;
+const token = config.token;
+const prefix = config.prefix;
 
 // Ready
 client.on('ready', () => {
@@ -17,7 +18,11 @@ client.on('ready', () => {
 client.on('message', message => {
     if(message.author.bot) return;
 
-    if (message.content[0] == "!" && message.content[1]) {
+    // if(message.content[0] != prefix) {
+    //     message.channel.send("hey");
+    // }
+
+    if (message.content[0] == prefix && message.content[1]) {
         let userCommand = message.content.toString().substring(1);
 
         switch(userCommand) {
@@ -29,7 +34,7 @@ client.on('message', message => {
             break;
 
             case "test":
-                message.channel.send("This command is reserved for testing new functions.");
+                // message.channel.send("This command is reserved for testing new functions.");
             break;
             
             default:

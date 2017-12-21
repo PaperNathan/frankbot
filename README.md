@@ -1,4 +1,4 @@
-# FrankBot v1.0.1
+# FrankBot v1.0.3
 *A Discord Bot for Saving Chat Logs*
 
 ### What is FrankBot
@@ -34,7 +34,7 @@ No known bugs  🙂
 
 - [x] Save Sent Messages, Links, Code
 - [x] Save Chat Logs based on Channel Name and Date
-- [ ] Change Command Input to Switch/Case with Error Handling
+- [x] Change Command Input to Switch/Case with Error Handling
 - [ ] Save Sent Photos
 - [ ] Save Sent File Names
 - [ ] Rebuild Archived but Deleted Chat Logs
