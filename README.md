@@ -18,11 +18,12 @@ To make FrankBot Work you're going to need a few things.
 1. A [TextEditor](https://code.visualstudio.com/).  
 1. You'll need to [register your own discord app](https://discordapp.com/developers/) and get a token. 
 1. You'll need to invite your bot to your server.
-1. You'll need to create a file in FrankBot's root folder called *auth.json* and inside this file you'll need to copy paste the code below.
+1. You'll need to create a file in FrankBot's root folder called *config.json* and inside this file you'll need to copy paste the code below.
 
 ```javascript
 {
     "token": "YOUR_TOKEN_GOES_HERE"
+    "prefix": "!"
 }
 ```
 

@@ -18,14 +18,11 @@ client.on('ready', () => {
 client.on('message', message => {
     if(message.author.bot) return;
 
-    // if(message.content[0] != prefix) {
-    //     message.channel.send("hey");
-    // }
-
     if (message.content[0] == prefix && message.content[1]) {
-        let userCommand = message.content.toString().substring(1);
+        let userCommand = message.content.toString().substring(1).split(" ");
+        
 
-        switch(userCommand) {
+        switch(userCommand[0]) {
             case "save":  //  Save Chat Logs for a Text Channel
                 let writeMsg = [];
                 let lastMsg = message.channel.lastMessageID;
@@ -33,43 +30,25 @@ client.on('message', message => {
                 msgCollection(message, lastMsg, writeMsg);
             break;
 
-            case "test":
-                // message.channel.send("This command is reserved for testing new functions.");
+            case "babble":  // !babble <number> makes the bot send random chat messages for testing other functions.  [Max 1 Message per Second]
+
+                if (!userCommand[1]) message.channel.send("Please add an arguement (number).  [ex. !command <number>]");
+                babble(message, userCommand[1]);
+
+            break;
+
+            case "count":  // !count <number> makes the bot count to that number 1 message at a time
+                if (!userCommand[1]) message.channel.send("Please add an arguement (number).  [ex. !command <number>]");
+                count(message, userCommand[1]);
             break;
             
             default:
                 message.channel.send("I'm sorry, I didn't understand that command.");
         }
     }
-
-    // =-=-=-=-=-=-=-=-=  TEST COMMANDS  =-=-=-=-=-=-=-=-=-=-=-
-    
-
-    // COMMAND:  Bot Speaks Gibberish for Testing
-    // if (message.author.username == "Twinbee" && message.content == "!blah") {
-    //     let smartTalk = ("abcdefghijklmnopqrstuvwxyz").split("");
-    //     let babble = "";
-    //     for (i=0; i<100; i++) {
-    //         babble = "";
-    //         let characterLen = Math.floor((Math.random() * 6) + 1);
-    //         for (j=0; j<characterLen; j++) {
-    //             let letter = Math.floor((Math.random() * 25) + 1);
-    //             babble += smartTalk[letter];
-    //         }
-    //         message.channel.send(babble);
-    //     }
-    //     message.channel.send('finished!');
-    // }
-
-    // COMMAND:  Bot Counts to 100 for Testing
-    // if (message.author.username == "Twinbee" && message.content == "!orderedBlah") {
-    //     for (i=1; i<=100; i++) {
-    //         message.channel.send(i);
-    //     }
-    // }
-        
-
 });
+        
+// =-=-=-=-=-=  Functions for User Commands  =-=-=-=-=-=-=
 
 //  Collects All of a Text Channels Chat Logs
 function msgCollection(message, lastMsg, writeMsg) {
@@ -93,6 +72,7 @@ function msgCollection(message, lastMsg, writeMsg) {
     .catch(console.error);  //  Catches Promise Errors
 }
 
+
 // Writes the Collected Chat Logs to a File [log.txt]
 function writeToFile(message, writeMsg, overflowToggle) {
     console.log('Block Saved!');
@@ -108,8 +88,40 @@ function writeToFile(message, writeMsg, overflowToggle) {
         }
 
     }
+
+}
+
+// Writes an unordered list of random strings to a TextChannel
+function babble(message, num) {
+    let consonants = ("bcdfghjklmnpqrstvwxyz").split("");
+    let vowels = ("aeiou")
+    let babble = "";
+
+    for (i=0; i<2; i++) {
+        babble = "";
+        let characterLen = Math.floor((Math.random() * 7) + 2);
+        for (j=0; j<Math.floor(characterLen / 2); j++) {
+            let con = Math.floor((Math.random() * 20));
+            let vow = Math.floor((Math.random() * 4))
+            babble += consonants[con] + vowels[vow];
+        }
+        message.channel.send(babble);
+    }
+
+}
+
+// Writes an ordered list of strings to a TextChannel
+function count(message, num) {
+    for (i=1; i<=num; i++) {
+        message.channel.send(i);
+    }
 }
 
 
 // Bot Login
 client.login(token);
+
+
+// =-=-=-=-=-=  Unused Logic  =-=-=-=-=-=-=
+
+// if(message.author.id == message.guild.owner.id) {};   // Channel Owner Lock
