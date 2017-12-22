@@ -1,4 +1,4 @@
-# FrankBot v1.0.3
+# FrankBot v1.0.4
 *A Discord Bot for Saving Chat Logs*
 
 ### What is FrankBot
@@ -31,8 +31,11 @@ After that, just run *node bot.js* in your Terminal.
 
 ### Known Bugs
 No known bugs  🙂
-### The Future
 
+### Recent Updates
+Added !help command for easier documentation reference.
+
+### The Future
 - [x] Save Sent Messages, Links, Code
 - [x] Save Chat Logs based on Channel Name and Date
 - [x] Change Command Input to Switch/Case with Error Handling

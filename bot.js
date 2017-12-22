@@ -18,9 +18,8 @@ client.on('ready', () => {
 client.on('message', message => {
     if(message.author.bot) return;
 
-    if (message.content[0] == prefix && message.content[1]) {
-        let userCommand = message.content.toString().substring(1).split(" ");
-        
+    if (message.content[0] == prefix && message.content[1]) { 
+        let userCommand = message.content.toString().substring(1).split(" ");  // Removes the prefix ('!') and splits the command away from the arguments
 
         switch(userCommand[0]) {
             case "save":  //  Save Chat Logs for a Text Channel
@@ -41,9 +40,40 @@ client.on('message', message => {
                 if (!userCommand[1]) message.channel.send("Please add an arguement (number).  [ex. !command <number>]");
                 count(message, userCommand[1]);
             break;
+
+            case "help":
+                message.channel.send({embed: {
+                    color: 3447003,
+                    author: {
+                    name: client.user.username,
+                    icon_url: client.user.avatarURL
+                    },
+                    title: "FrankBot Documentation",
+                    url: "https://github.com/PaperNathan/frankbot",
+                    description: "Here's a quick summary of FrankBot's Commands.  \n",
+                    fields: [{
+                        name: "!save",
+                        value: "Allows you to save the entire Text Channel Chat Log."
+                    },
+                    {
+                        name: "!babble <number>",
+                        value: "Creates an unordered list of random strings and sends them to the Text Channel." 
+                    },
+                    {
+                        name: "!count <number>",
+                        value: "Creates an ordered list of numbers and sends them to the Text Channel."
+                    }
+                    ],
+                    timestamp: new Date(),
+                    footer: {
+                    icon_url: client.user.avatarURL
+                    }
+                }
+                });
+            break;
             
             default:
-                message.channel.send("I'm sorry, I didn't understand that command.");
+                message.channel.send("I'm sorry, I didn't understand that command. Try !help.");
         }
     }
 });
