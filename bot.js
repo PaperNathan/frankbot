@@ -22,11 +22,14 @@ client.on('message', message => {
         let userCommand = message.content.toString().substring(1).split(" ");  // Removes the prefix ('!') and splits the command away from the arguments
 
         switch(userCommand[0]) {
+
             case "save":  //  Save Chat Logs for a Text Channel
+
                 let writeMsg = [];
                 let lastMsg = message.channel.lastMessageID;
         
                 msgCollection(message, lastMsg, writeMsg);
+
             break;
 
             case "babble":  // !babble <number> makes the bot send random chat messages for testing other functions.  [Max 1 Message per Second]
@@ -37,11 +40,14 @@ client.on('message', message => {
             break;
 
             case "count":  // !count <number> makes the bot count to that number 1 message at a time
+
                 if (!userCommand[1]) message.channel.send("Please add an arguement (number).  [ex. !command <number>]");
                 count(message, userCommand[1]);
+
             break;
 
             case "help":
+
                 message.channel.send({embed: {
                     color: 3447003,
                     author: {
@@ -70,10 +76,13 @@ client.on('message', message => {
                     }
                 }
                 });
+
             break;
             
             default:
+
                 message.channel.send("I'm sorry, I didn't understand that command. Try !help.");
+                
         }
     }
 });
