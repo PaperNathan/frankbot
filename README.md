@@ -1,3 +1,6 @@
+# Archived
+This project has been archived as it runs on a deprecated *discord.js* version.  
+
 # FrankBot v1.0.4
 *A Discord Bot for Saving Chat Logs*
 
@@ -22,7 +25,7 @@ To make FrankBot Work you're going to need a few things.
 
 ```javascript
 {
-    "token": "YOUR_TOKEN_GOES_HERE"
+    "token": "YOUR_TOKEN_GOES_HERE",
     "prefix": "!"
 }
 ```
